@@ -85,13 +85,13 @@ delete_rule(){
 #配置IP转发开机自启动
 tinyPortMapper_ip(){
     echo -e "${Green}正在配置tinyPortMapper...${Font}"
-    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${TartgetIP}:${port2} -t -u > /root/tinymapper.log 2>&1 &
+    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${TartgetIP}:${port2} -t -u --log-level 2 >> /root/logTinyPortMapper 2>&1 &
 }
 
 #配置域名转发开机自启动
 tinyPortMapper_domain(){
     echo -e "${Green}正在配置tinyPortMapper...${Font}"
-    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r $(nslookup ${TartgetDomain}|grep Add |awk '!/#/{printf$2"\n"}'):${port2} -t -u > /root/tinymapper.log 2>&1 &
+    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r $(nslookup ${TartgetDomain}|grep Add |awk '!/#/{printf$2"\n"}'):${port2} -t -u --log-level 2 >> /root/logTinyPortMapper 2>&1 &
 }
 
 mark_IPRecord(){
@@ -211,9 +211,9 @@ if [ -f "/tinyPortMapper/ip_keepalive.sh" -a -f "/tinyPortMapper/domain_keepaliv
 else
     echo -e "${Green}正在下载保活脚本！${Font}"
    #wget -O /tinyPortMapper/ip_keepalive.sh https://raw.githubusercontent.com/lmc999/TinyPortMapper_KeepAlive/master/ip_keepalive.sh
-	wget -O /tinyPortMapper/ip_keepalive.sh https://raw.githubusercontent.com/ss-daily-backup/TinyPortMapper_KeepAlive_backup/master/v20200430/ip_keepalive.sh
+	wget -O /tinyPortMapper/ip_keepalive.sh https://raw.githubusercontent.com/ss-daily-backup/TinyPortMapper_KeepAlive_backup/master/ip_keepalive-mod.sh
    #wget -O /tinyPortMapper/domain_keepalive.sh https://raw.githubusercontent.com/lmc999/TinyPortMapper_KeepAlive/master/domain_keepalive.sh
-	wget -O /tinyPortMapper/domain_keepalive.sh https://raw.githubusercontent.com/ss-daily-backup/TinyPortMapper_KeepAlive_backup/master/v20200430/domain_keepalive.sh
+	wget -O /tinyPortMapper/domain_keepalive.sh https://raw.githubusercontent.com/ss-daily-backup/TinyPortMapper_KeepAlive_backup/master/domain_keepalive-mod.sh
 	
 fi
 }
