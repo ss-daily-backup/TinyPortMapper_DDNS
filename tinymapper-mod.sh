@@ -84,12 +84,14 @@ delete_rule(){
 }
 #配置IP转发开机自启动
 tinyPortMapper_ip(){
-    :
+    echo -e "${Green}正在配置tinyPortMapper...${Font}"
+    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${TartgetIP}:${port2} -t -u > /root/tinymapper.log 2>&1 &
 }
 
 #配置域名转发开机自启动
 tinyPortMapper_domain(){
-    :
+    echo -e "${Green}正在配置tinyPortMapper...${Font}"
+    nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r $(nslookup ${TartgetDomain}|grep Add |awk '!/#/{printf$2"\n"}'):${port2} -t -u > /root/tinymapper.log 2>&1 &
 }
 
 mark_IPRecord(){
