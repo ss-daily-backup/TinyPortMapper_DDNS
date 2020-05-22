@@ -10,6 +10,7 @@ lmc999 的 TinyPortMapper 转发脚本备份
 - 每 10 分钟执行一次域名转发保活脚本
 - 更改源为本repo
 - 强制https证书验证，不能下载的话请先执行 `yum install ca-certificates wget -y` 或 `apt-get install ca-certificates wget -y`。
+- 修改 log 文件位置为 /root/logtpm，并更改日志等级为error
 
 
 # 用法
