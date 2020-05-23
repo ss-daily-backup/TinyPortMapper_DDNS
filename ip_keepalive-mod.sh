@@ -12,7 +12,7 @@ check_txt(){
 if [ -f ${file} ]; then
     sleep 1
 else
-    echo -e "转发记录不存在，即将退出脚本..."
+    echo -e "`date -R` 转发记录不存在，即将退出脚本..."
         exit 1
 fi
 }
@@ -25,10 +25,10 @@ while read -r line || [[ -n $line ]];do
     pid=$(ps -aux | grep '${port1)' |grep -v grep |awk '!/#/{printf$2"\n"}')
 if [ -n "${pid}" ]
 then
-    echo -e "转发记录正常"
+    echo -e "`date -R` 转发记录正常"
 
 else
-    echo -e "转发记录不存在，正在添加中..."
+    echo -e "`date -R` 转发记录不存在，正在添加中..."
     nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${ip}:${port2} -t -u --log-level 2 >> /root/logTinyPortMapper 2>&1 &
 
 
@@ -40,6 +40,6 @@ done < ${file}
 
 
 
-
+echo -e "******** `date -R` Logs: ********"
 check_txt
 check_alive
