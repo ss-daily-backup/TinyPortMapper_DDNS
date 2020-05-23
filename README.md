@@ -1,5 +1,5 @@
 # TinyPortMapper_KeepAlive_backup
-lmc999 的 TinyPortMapper 转发脚本备份以及各种修改版
+lmc999 的 TinyPortMapper 转发脚本备份以及各种修改版，支持 DDNS 并根据自己的习惯修正了一些问题。
 
 # 修改的地方
 删除了不必要的改动
