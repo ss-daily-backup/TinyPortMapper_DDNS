@@ -11,7 +11,7 @@ check_txt(){
 if [ -f ${file} ]; then
     sleep 1
 else
-    echo -e "转发记录不存在，即将退出脚本..."
+    echo -e "`date -R` 转发记录不存在，即将退出脚本..."
 exit 1
 
 fi
@@ -37,7 +37,7 @@ then
     check_alive
 
 else
-    echo -e "转发记录IP已更新，正在重新配置转发"
+    echo -e "`date -R` 转发记录IP已更新，正在重新配置转发"
     kill -9 ${pid}
     sleep 1
     nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${ip_new}:${port2} -t -u --log-level 2 >> /root/logTinyPortMapper 2>&1 &
@@ -50,16 +50,17 @@ fi
 check_alive(){
 if [ -n "${pid}" ]
 then
-    echo -e "转发记录正常"
+    echo -e "`date -R` 转发记录正常"
 	
 else
-    echo -e "转发记录不存在，正在重新配置转发"
+    echo -e "`date -R` 转发记录不存在，正在重新配置转发"
     nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${ip_new}:${port2} -t -u --log-level 2 >> /root/logTinyPortMapper 2>&1 &
     sed -i 's/'$ip_old'/'$ip_new'/g' ${file} #用新解析IP替换旧的记录
 fi
 }
 
 
+echo -e "******** `date -R` Logs: ********"
 check_txt
 run_record
 
