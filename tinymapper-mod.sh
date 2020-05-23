@@ -122,6 +122,7 @@ set_forwardmethod(){
 	echo -e "${Blue}2. 添加域名转发！(支持DDNS)${Font}"	
 	echo -e "${Blue}3. 删除转发规则！${Font}"
 	echo -e "${Blue}4. 退出脚本${Font}"		
+	echo -e "${Blue}9. 显示现有转发规则${Font}"
 	echo 
 	read -p "Please enter a number:" num
 	case "$num" in
@@ -137,16 +138,33 @@ set_forwardmethod(){
     mark_DomainRecord
     tinyPortMapper_domain
     ;;
-	 3)
+    3)
 	checkos
     delete_rule
     ;;
     4)
     exit 1
     ;;
+	9)
+    echo "当前DDNS转发列表如下："
+	if [ -f /tinyPortMapper/ddns_record.txt ]; then
+		echo "本地端口 远程端口 远程域名 当前远程IP"
+		cat /tinyPortMapper/ddns_record.txt
+	else
+		echo -e "DDNS转发记录不存在..."
+	fi
+	echo 
+	echo "当前IP转发列表如下："
+	echo "本地端口 远程端口 远程IP"
+	if [ -f /tinyPortMapper/record.txt ]; then
+		cat /tinyPortMapper/record.txt
+	else
+		echo -e "IP转发记录不存在..."
+	fi
+    ;;
     *)
     clear
-    Blue "Please enter the correct number!"
+    echo "Please enter the correct number!"
     sleep 1
     set_forwardmethod
     ;;
