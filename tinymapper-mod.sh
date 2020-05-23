@@ -238,8 +238,8 @@ fi
 
 #创建定时任务，保活转发规则并检查DDNS IP更新
 set_cronjob(){
-echo "*/5 * * * * root bash /tinyPortMapper/ip_keepalive.sh" >> /etc/crontab
-echo "*/10 * * * * root bash /tinyPortMapper/domain_keepalive.sh" >> /etc/crontab
+echo "*/5 * * * * root bash /tinyPortMapper/ip_keepalive.sh >> /root/logTinyPortMapper_cronjob 2>&1" >> /etc/crontab
+echo "*/10 * * * * root bash /tinyPortMapper/domain_keepalive.sh >> /root/logTinyPortMapper_cronjob 2>&1" >> /etc/crontab
 
 }
 
