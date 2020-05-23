@@ -22,7 +22,7 @@ while read -r line || [[ -n $line ]];do
     port1=$(echo $line | awk '!/#/{printf$1"\n"}')
 	port2=$(echo $line | awk '!/#/{printf$2"\n"}')
     ip=$(echo $line | awk '!/#/{printf$3"\n"}')
-    pid=$(ps -aux | grep '${port1)' |grep -v grep |awk '!/#/{printf$2"\n"}')
+    pid=$(ps -aux | grep "${port1}" |grep -v grep |awk '!/#/{printf$2"\n"}')
 if [ -n "${pid}" ]
 then
     echo -e "`date -R` 转发记录正常"
