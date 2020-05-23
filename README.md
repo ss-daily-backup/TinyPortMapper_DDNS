@@ -20,6 +20,7 @@ lmc999 的 TinyPortMapper 转发脚本备份以及各种修改版
 
 #### 如遇到定时保活脚本不自动执行，可手动创建任务
     crontab -e
-    */5 *  *  *  * bash /tinyPortMapper/ip_keepalive.sh
-    */10 *  *  *  * bash /tinyPortMapper/domain_keepalive.sh
-   #每五分钟执行一次IP转发保活脚本 #每两分钟执行一次域名转发保活脚本
+    # 然后在底部添加以下两行
+    echo "*/5 * * * * root bash /tinyPortMapper/ip_keepalive.sh >> /root/logTinyPortMapper_cronjob 2>&1" >> /etc/crontab
+    echo "*/10 * * * * root bash /tinyPortMapper/domain_keepalive.sh >> /root/logTinyPortMapper_cronjob 2>&1" >> /etc/crontab
+
