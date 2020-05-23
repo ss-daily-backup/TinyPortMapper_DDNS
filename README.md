@@ -15,6 +15,7 @@ lmc999 的 TinyPortMapper 转发脚本备份以及各种修改版
 - 重定向 crontab 日志，并增加时间戳，以免引发MTA安装时的邮件轰炸灾难，crontab 日志在 /root/logTinyPortMapper_cronjob
 
 # 用法
+    cd /root
     wget https://raw.githubusercontent.com/ss-daily-backup/TinyPortMapper_KeepAlive_backup/master/tinymapper-mod.sh
     bash tinymapper-mod.sh
 
