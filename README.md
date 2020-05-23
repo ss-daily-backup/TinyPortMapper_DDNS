@@ -13,6 +13,7 @@ lmc999 的 TinyPortMapper 转发脚本备份以及各种修改版，支持 DDNS 
 - 修改 log 文件位置为 /root/logTinyPortMapper，并更改日志等级为error
 - 增加简单的当前端口列表显示
 - 重定向 crontab 日志，并增加时间戳，以免引发MTA安装时的邮件轰炸灾难，crontab 日志在 /root/logTinyPortMapper_cronjob
+- 修复了一些 bugs
 
 # 用法
     cd /root
