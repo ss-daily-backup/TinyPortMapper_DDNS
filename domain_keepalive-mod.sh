@@ -25,8 +25,14 @@ domain=$(echo $line | awk '!/#/{printf$3"\n"}')
 ip_old=$(echo $line | awk '!/#/{printf$4"\n"}')
 ip_new=$(nslookup ${domain}|grep Add |awk '!/#/{printf$2"\n"}')
 pid=$(ps -aux | grep ${port1} |grep -v grep |awk '!/#/{printf$2"\n"}')
-	
-keep_alive
+
+if [ ${#ip_new} -lt 7 ]
+then
+    echo "DNS获取失败，退出更新..."
+    exit 1
+else
+    keep_alive
+fi
 	
 done < ${file}
 }
