@@ -74,11 +74,11 @@ delete_rule(){
 	
 	sed -i '/'${port}'/d' /tinyPortMapper/record.txt
 	sed -i '/'${port}'/d' /tinyPortMapper/ddns_record.txt
-	if [ "${OS}" == 'CentOS' ];then
-	    sed -i '/'${port}'/d' /etc/rc.d/rc.local
-	else
-	    sed -i '/'${port}'/d' /etc/rc.local
-	fi
+#	if [ "${OS}" == 'CentOS' ];then
+#	    sed -i '/'${port}'/d' /etc/rc.d/rc.local
+#	else
+#	    sed -i '/'${port}'/d' /etc/rc.local
+#	fi
 	
 	echo -e "${Blue}转发规则删除成功！${Font}"
 }
