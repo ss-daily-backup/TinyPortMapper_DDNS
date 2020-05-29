@@ -122,7 +122,7 @@ set_forwardmethod(){
 	echo -e "${Blue}2. 添加域名转发！(支持DDNS)${Font}"	
 	echo -e "${Blue}3. 删除转发规则！${Font}"
 	echo -e "${Blue}4. 退出脚本${Font}"		
-	echo -e "${Blue}9. 显示现有转发规则（请在添加完后检查转发规则，如果发现DDNS规则列表里面没有解析出当前IP，请删除规则后重新添加！）${Font}"
+	echo -e "${Blue}9. 显示现有转发规则（请在添加完后检查转发规则，如果发现DDNS规则列表里面没有解析出“当前远程IP”，即“当前远程IP”这一栏没有显示IP，请删除规则后重新添加！）${Font}"
 	echo 
 	read -p "Please enter a number:" num
 	case "$num" in
