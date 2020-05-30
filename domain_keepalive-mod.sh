@@ -28,7 +28,7 @@ pid=$(ps -aux | grep ${port1} |grep -v grep |awk '!/#/{printf$2"\n"}')
 
 if [ ${#ip_new} -lt 7 ]
 then
-    echo "DNS获取失败，退出更新..."
+    echo "`date -R` DNS获取失败，退出更新..."
     exit 1
 else
     keep_alive
